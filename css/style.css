@@ -12,26 +12,35 @@ Dark green: #28b485
 
 */
 
-* {
+*,
+*::after,
+*::before {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%; /* 1rem = 10px */
 }
 
 body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    /* font-size: 16px; */
     line-height: 1.7;
     color: #777;
-    padding: 30px;
+    /* padding: 30px; formula 30px / 10px = 3rem */
+    padding: 3rem;
+    box-sizing: border-box;
 }
 
 .header{
     height: 95vh; /* viewport height */
     background-image: linear-gradient(
         to right bottom, 
-        #ff8c8cc8, 
+        #ffc3c3d8, 
         #ff5d5dd8), 
         url(../img/natural_hero.jpg);
     background-size: cover;
@@ -43,13 +52,16 @@ body {
 
 .logo-box {
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 4rem;
+    left: 4rem;
 }
 
 .logo {
-    height: 50px;
+    height: 3.5rem;
     transition: all .2s;
+    animation: moveLogo 2s 0s;
+    opacity: 0.4;
+    
 }
 
 .logo:hover {
@@ -69,14 +81,14 @@ body {
     text-transform: uppercase;
     /* prevents the animating text from shaking */
     backface-visibility: hidden;
-    margin-bottom: 60px;
+    margin-bottom: 6rem;
 }
 
 .heading-primary-main {
     display: block;
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
     /* use { moveInLeft } animation */
     animation-name: moveInLeft;
     animation-duration: 2s;
@@ -91,9 +103,9 @@ body {
 
 .heading-primary-sub {
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 17.4px;
+    letter-spacing: 1.75rem;
     /* use { moveInRight } animation */
     animation: moveInRight 2s;
 }
@@ -103,12 +115,12 @@ body {
     /* animation start */
     0%{
         opacity: 0;
-        transform: translateX(-100px); /* x - left to right / y - top to bottom */
+        transform: translateX(-10rem); /* x - left to right / y - top to bottom */
     }
 
     /* we can have additional animations at any other point between 0% and 100% */
     80% {
-        transform: translateX(3px);
+        transform: translateX(.3rem);
     }
 
     /* animation finish */
@@ -124,7 +136,7 @@ body {
     /* animation start */
     0%{
         opacity: 0;
-        transform: translateX(100px); /* x - left to right / y - top to bottom */
+        transform: translateX(10rem); /* x - left to right / y - top to bottom */
     }
 
     /* we can have additional animations at any other point between 0% and 100% */
@@ -145,7 +157,7 @@ body {
     /* animation start */
     0%{
         opacity: 0;
-        transform: translateY(20px); /* x - left to right / y - top to bottom */
+        transform: translateY(2rem); /* x - left to right / y - top to bottom */
     }
 
     /* animation finish */
@@ -156,27 +168,43 @@ body {
 
 }
 
+@keyframes moveLogo {
+    /* animation start */
+    0%{
+        opacity: 0;
+        transform: translateY(2rem); /* x - left to right / y - top to bottom */
+    }
+
+    /* animation finish */
+    100% {
+        opacity: 0.4;
+        transform: translateY(0);
+    }
+
+}
+
 .btn:link, 
 .btn:visited {
     text-transform: uppercase;
     text-decoration: none;
     /* (top)px (right)px (bottom)px (left)px */
-    padding: 15px 40px; /* (top + bottom)px / (left + right)px */
+    padding: 1.5rem 4rem; /* (top + bottom)px / (left + right)px */
     display: inline-block;
-    border-radius: 100px;
+    border-radius: 10rem;
     transition: all .2s;
     position: relative;
+    font-size: 1.6rem;
 }
 
 .btn:hover {
-    transform: translateY(-3px);
+    transform: translateY(-.3px);
     /* (x, y, blur, color) */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, .2); 
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2); 
 }
 
 .btn:active {
     transform: translateY(-1px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .2); 
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2); 
 }
 
 .btn-white {
@@ -189,7 +217,7 @@ body {
     display: inline-block;
     height: 100%;
     width: 100%;
-    border-radius: 100px;
+    border-radius: 10rem;
     position: absolute;
     top: 0;
     left: 0;
@@ -207,6 +235,6 @@ body {
 }
 
 .btn-animated {
-    animation: moveInBottom 2s .75s;
+    animation: moveInBottom 2s .85s;
     animation-fill-mode: backwards;
 }
